@@ -55,6 +55,51 @@ Ostre tezy, mocne opinie, demaskowanie ściem branży supli — TAK.
 - Każdy post który jest jeszcze szkicem → `draft: true`
 - Daty w formacie YYYY-MM-DD
 
+## Dozwolone tagi (pula oficjalna)
+
+Konwencja sztywna: lowercase, kebab-case, bez polskich znaków, max 25 znaków, łaciny zlatynizowane.
+
+**Gatunkowe** (jeden grzyb = jeden tag):
+- `reishi` (*Ganoderma lucidum*)
+- `lion-s-mane` (*Hericium erinaceus*)
+- `cordyceps` (*Cordyceps militaris*, *Ophiocordyceps sinensis*)
+- `chaga` (*Inonotus obliquus*)
+- `maitake` (*Grifola frondosa*)
+- `shiitake` (*Lentinula edodes*)
+- `turkey-tail` (*Trametes versicolor*)
+- `polyporus` (*Polyporus umbellatus*)
+- `poria-cocos` (*Wolfiporia cocos* / pornatka kokosowa, fu ling)
+- `psilocybe` (rodzaj — psilocybiny generalnie)
+- `amanita-muscaria` (muchomor czerwony)
+- `agaricus-blazei`
+
+**Tematyczne:**
+- `manifest` (manifesty, deklaracje redakcyjne)
+- `metoda` (jak czytamy badania, jak rozpoznajemy ściemy)
+- `nauka` (analizy konkretnych badań RCT/in vitro)
+- `historia` (Wasson, Sabina, McKenna, etnomykologia)
+- `redukcja-szkod` (psychodeliki, set & setting, kiedy NIE brać)
+- `psychodeliki` (szerokie — nauka, polityka, kultura)
+- `prawo` (regulacje EU 1924/2006, polska ustawa, EFSA)
+- `branza` (demaskacje, ściemy producentów, analizy konkurencji)
+- `ekologia` (mycoremediation, bioróżnorodność)
+- `kulinaria` (jadalne, przepisy, fermentacja)
+- `biomaterialy` (Ecovative, MycoWorks, mykoarchitektura)
+- `protokoly` (jak praktycy używają grzybów funkcjonalnych)
+
+**Specjalne** (używaj oszczędnie):
+- `mocna-teza` (post z opinią kontrowersyjną, mocno argumentowaną)
+- `recenzja-badania` (deep-dive w pojedynczą publikację)
+- `q-i-a` (odpowiedź na pytanie z DM/komentarzy)
+
+**Zasady doboru:**
+- 2-4 tagi na post (nie więcej)
+- Jeśli post o konkretnym grzybie → 1 tag gatunkowy + 1-2 tematyczne
+- Jeśli post ogólny → 2-3 tematyczne
+- NIE wymyślaj nowych tagów bez akceptacji użytkownika
+- Jeśli temat nie pasuje do żadnego istniejącego tagu, zaproponuj nowy w komentarzu i poproś o decyzję
+- "Harm reduction" jako koncepcja w treści zostaje po angielsku (standard branżowy w PL środowisku psychodelicznym); tylko tag jest spolszczony jako `redukcja-szkod`
+
 ## Workflow z Claude Code
 - Zanim coś nadpiszesz, pokaż diff i czekaj na akceptację użytkownika
 - Przy tworzeniu nowych postów: zaproponuj 3 warianty hooka / leadu i poproś o wybór
