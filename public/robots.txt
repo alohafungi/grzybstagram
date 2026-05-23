@@ -5,29 +5,32 @@
 User-agent: *
 Allow: /
 
-# === Content-Signal directive (Cloudflare 2024+) ===  # [DO WERYFIKACJI: aktualny format spec stanu 2026]
+# === Content-Signal directive (Cloudflare Content Signals Policy) ===
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 # === BLOKADA training botów ===
 User-agent: GPTBot                  # OpenAI training
 Disallow: /
 
-User-agent: Google-Extended         # Google Gemini training
+User-agent: Google-Extended         # Google Gemini / Vertex AI training
 Disallow: /
 
-User-agent: ClaudeBot               # Anthropic training  # [DO WERYFIKACJI: nazwa stanu 2026, była zmiana z anthropic-ai]
+User-agent: ClaudeBot               # Anthropic training
 Disallow: /
 
 User-agent: anthropic-ai            # legacy Anthropic crawler
 Disallow: /
 
-User-agent: FacebookBot             # Meta training  # [DO WERYFIKACJI: vs Meta-ExternalAgent]
+User-agent: FacebookBot             # Meta training (mowa)
 Disallow: /
 
-User-agent: Meta-ExternalAgent      # Meta training (nowsze)  # [DO WERYFIKACJI]
+User-agent: Meta-ExternalAgent      # Meta training (foundation models)
 Disallow: /
 
-User-agent: Bytespider              # ByteDance/TikTok training
+User-agent: Meta-WebIndexer         # Meta AI search indexing
+Disallow: /
+
+User-agent: Bytespider              # ByteDance/TikTok training (UWAGA: ignoruje robots.txt — wymaga blokady na firewall/WAF)
 Disallow: /
 
 User-agent: CCBot                   # Common Crawl (źródło dla wielu trenerów)
@@ -36,7 +39,10 @@ Disallow: /
 User-agent: Applebot-Extended       # Apple Intelligence training
 Disallow: /
 
-User-agent: cohere-ai               # Cohere training  # [DO WERYFIKACJI: nazwa]
+User-agent: cohere-ai               # Cohere retrieval/AI
+Disallow: /
+
+User-agent: cohere-training-data-crawler   # Cohere training (osobny od cohere-ai)
 Disallow: /
 
 User-agent: Diffbot
@@ -51,26 +57,29 @@ Disallow: /
 User-agent: YouBot                  # You.com
 Disallow: /
 
-User-agent: Amazonbot               # [DO WERYFIKACJI: Alexa+ używa do answers, kontrowersja]
+User-agent: Amazonbot               # Amazon — używany m.in. do training
 Disallow: /
 
 # === ALLOW citation/search botów ===
 User-agent: Googlebot
 Allow: /
 
-User-agent: Bingbot
+User-agent: Bingbot                 # Bing + Copilot (Microsoft nie ma osobnego crawlera AI)
 Allow: /
 
 User-agent: DuckDuckBot
 Allow: /
 
-User-agent: Applebot                # Spotlight (nie Apple Intelligence)
+User-agent: DuckAssistBot           # DuckDuckGo AI assistant z citation (nie training)
+Allow: /
+
+User-agent: Applebot                # Spotlight / Siri (nie Apple Intelligence)
 Allow: /
 
 User-agent: ChatGPT-User            # OpenAI on-demand fetch z citation
 Allow: /
 
-User-agent: OAI-SearchBot           # OpenAI SearchGPT  # [DO WERYFIKACJI: nazwa stanu 2026]
+User-agent: OAI-SearchBot           # OpenAI ChatGPT search citations
 Allow: /
 
 User-agent: PerplexityBot           # search index
@@ -80,6 +89,21 @@ User-agent: Perplexity-User         # on-demand fetch z citation
 Allow: /
 
 User-agent: Claude-User             # Anthropic inference z citation (≠ ClaudeBot)
+Allow: /
+
+User-agent: Claude-SearchBot        # Anthropic search index (citation)
+Allow: /
+
+User-agent: Claude-Code             # Anthropic Claude Code CLI agent
+Allow: /
+
+User-agent: Meta-ExternalFetcher    # Meta AI on-demand fetch z citation (uwaga: może ignorować robots)
+Allow: /
+
+User-agent: Amzn-SearchBot          # Amazon Alexa/Rufus search (NIE training)
+Allow: /
+
+User-agent: Amzn-User               # Amazon on-demand user fetch (NIE training)
 Allow: /
 
 Sitemap: https://grzybstagram.pl/sitemap-index.xml
