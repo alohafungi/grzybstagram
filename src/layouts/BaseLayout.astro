@@ -11,7 +11,6 @@ interface Props {
   type?: 'website' | 'article';
   publishedDate?: Date;
   modifiedDate?: Date;
-  author?: string;
   pageType?: 'home' | 'blog' | 'post' | 'page';
   noindex?: boolean;
 }
@@ -23,7 +22,6 @@ const {
   type = "website",
   publishedDate,
   modifiedDate,
-  author = "grzybstagram",
   pageType = "page",
   noindex = false
 } = Astro.props;
@@ -46,12 +44,19 @@ const jsonLDWebsite = {
   "description": description,
 };
 
-const jsonLDOrganization = {
-  "@context": "https://schema.org",
+const orgRef = {
   "@type": "Organization",
   "name": siteName,
   "url": Astro.site?.toString(),
-  "logo": new URL("/favicon.svg", Astro.site).toString(),
+  "logo": {
+    "@type": "ImageObject",
+    "url": new URL("/favicon.svg", Astro.site).toString()
+  }
+};
+
+const jsonLDOrganization = {
+  "@context": "https://schema.org",
+  ...orgRef,
   "sameAs": []
 };
 
@@ -68,18 +73,8 @@ const jsonLDArticle = publishedDate ? {
   "@type": "BlogPosting",
   "headline": title,
   "image": ogImageURL.toString(),
-  "author": {
-    "@type": "Person",
-    "name": author
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": siteName,
-    "logo": {
-      "@type": "ImageObject",
-      "url": new URL("/favicon.svg", Astro.site).toString()
-    }
-  },
+  "author": orgRef,
+  "publisher": orgRef,
   "datePublished": publishedDate.toISOString(),
   "dateModified": modifiedDate ? modifiedDate.toISOString() : publishedDate.toISOString(),
   "mainEntityOfPage": canonicalURL.toString(),
@@ -205,8 +200,9 @@ if (pageType === 'home' || pageType === 'blog') jsonLdBlocks.push(jsonLDBlog);
 
       <footer class="max-w-4xl mx-auto py-8 border-t border-gray-200 dark:border-gray-800 mt-12">
           <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-sm text-gray-500 dark:text-gray-500">
-              © 2026 grzybstagram
+            <div class="flex flex-col text-sm text-gray-500 dark:text-gray-500 gap-1 text-center md:text-left">
+              <div>© 2026 grzybstagram</div>
+              <div>Made by <a href="/about" class="nav-link-footer">MyCELLium on a human mission</a></div>
             </div>
             <nav class="flex items-center gap-4">
               <a href="/" class="nav-link-footer">Start</a>
