@@ -35,7 +35,7 @@ const publishDate = new Date(date);
       <div class="text-gray-500 text-sm mb-2">
         <time datetime={publishDate.toISOString()}>{formatDate(date)}</time> • <span>{formatReadingTime(readingTime)}</span>
       </div>
-      <h1 class="text-5xl mb-6" transition:name={`title-${slug}`}>{title}</h1>
+      <h1 class="text-4xl sm:text-5xl mb-6" transition:name={`title-${slug}`}>{title}</h1>
       {excerpt && <p class="text-xl text-gray-500">{excerpt}</p>}
 
       {tags && tags.length > 0 && (

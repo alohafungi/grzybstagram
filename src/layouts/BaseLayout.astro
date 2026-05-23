@@ -152,7 +152,7 @@ if (pageType === 'home' || pageType === 'blog') jsonLdBlocks.push(jsonLDBlog);
   </head>
   <body class="text-gray-900 bg-white dark:text-gray-300 dark:bg-black transition-colors duration-300">
     <div class="bg-white dark:bg-black transition-colors duration-300">
-      <header class="mx-auto max-w-4xl py-8">
+      <header class="mx-auto max-w-4xl py-8 px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
           <a href="/" class="text-2xl font-semibold" transition:animate="fade">grzybstagram</a>
 
@@ -194,11 +194,11 @@ if (pageType === 'home' || pageType === 'blog') jsonLdBlocks.push(jsonLDBlog);
         </nav>
       </header>
 
-      <main class="py-10" transition:animate="fade">
+      <main class="py-10 px-4 sm:px-6 lg:px-8" transition:animate="fade">
         <slot />
       </main>
 
-      <footer class="max-w-4xl mx-auto py-8 border-t border-gray-200 dark:border-gray-800 mt-12">
+      <footer class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-800 mt-12">
           <div class="flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex flex-col text-sm text-gray-500 dark:text-gray-500 gap-1 text-center md:text-left">
               <div>© 2026 grzybstagram</div>
